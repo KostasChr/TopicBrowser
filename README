@@ -1,2 +1,3 @@
-A sample Spring/ Maven app for using MALLET LDA functionality.
+A very simple example Spring / Maven app for using MALLET LDA functionality.
+Uses Junit and Mockito for testing.
 
