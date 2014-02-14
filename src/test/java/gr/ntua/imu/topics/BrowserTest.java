@@ -17,7 +17,7 @@ import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.when;
 
 /**
- * User: Kostas Christidis
+ * @author KostasChr
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring-config-test.xml")

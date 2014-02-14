@@ -15,7 +15,7 @@ import java.util.HashSet;
 import static org.mockito.Mockito.when;
 
 /**
- * User: Kostas Christidis
+ * @author KostasChr
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring-config-test.xml")
@@ -24,10 +24,11 @@ public class AnalyzerTest {
 
     private static HashSet<String> mockDocumentSet;
     private static HashSet<String> mockLabelSet;
-
+    @Autowired
+    private AnalyzerImpl analyzer;
 
     @BeforeClass
-    public static void initializeTestVariables(){
+    public static void initializeTestVariables() {
         mockDocumentSet = new HashSet<String>();
         mockDocumentSet.add("test test test test test2 ");
         mockDocumentSet.add("test2 sadf test test ");
@@ -36,13 +37,10 @@ public class AnalyzerTest {
         mockLabelSet.add("test2");
     }
 
-    @Autowired
-    private AnalyzerImpl analyzer;
-
     @Test
-    public void testEstimation(){
+    public void testEstimation() {
         FileSource mockSource = Mockito.mock(FileSource.class);
-        when(mockSource.getDocuments()) .thenReturn(mockDocumentSet);
+        when(mockSource.getDocuments()).thenReturn(mockDocumentSet);
         when(mockSource.getLabels()).thenReturn(mockLabelSet);
         analyzer.setSource(mockSource);
         analyzer.loadTrainSet();

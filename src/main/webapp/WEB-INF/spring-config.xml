@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:annotation-config />
+    <context:component-scan base-package="gr.ntua.imu.topics"/>
+
+    <bean id="analyzer" class="gr.ntua.imu.topics.analyzer.AnalyzerImpl">
+        <property name="numberOfTopics" value="50"/>
+        <property name="numberOfIterations" value="400"/>
+        <property name="alpha" value="0.01"/>
+        <property name="beta" value="0.01"/>
+        <property name="source" ref="fileSource"/>
+    </bean>
+    <bean id="fileSource"
+          class="gr.ntua.imu.topics.data.FileSource">
+        <property name="filePath" value="c:\tmp\example.txt" />
+    </bean>
+</beans>
