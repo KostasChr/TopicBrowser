@@ -15,23 +15,26 @@ public class BrowserService {
     private Analyzer analyzer;
 
     public String presentResults() {
+        StringBuilder stringBuilder= new StringBuilder();
         try {
+
             analyzer.loadTrainSet();
             analyzer.estimate();
             int numberOfTopics = analyzer.getSize();
             Set<String> wordsForTopic;
             for (int i = 0; i < numberOfTopics; i++) {
+                stringBuilder.append("\n " + i  + " " ) ;
                 wordsForTopic = analyzer.getWordsForTopic(i);
-                System.out.println();
                 for (String s : wordsForTopic) {
-                    System.out.print(s + " ");
+                    stringBuilder.append(s + " ");
                 }
             }
+
 
         } catch (Exception e) {
             return "not presented";
         }
-        return "Presented";
+        return stringBuilder.toString();
     }
 
     public Analyzer getAnalyzer() {

@@ -2,7 +2,7 @@
 <web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
 	version="2.4">
-	<display-name>Wicket Web Application</display-name>
+	<display-name>Wicket Spring Topic application</display-name>
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -11,18 +11,18 @@
 
 
     <filter>
-		<filter-name>wicket.wicketTest</filter-name>
-		<filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
-		<init-param>
-			<param-name>applicationClassName</param-name>
-			<param-value>gr.ntua.imu.topics.app.TopicApplication</param-value>
-		</init-param>
-	</filter>
+        <filter-name>wicket.wicketTest</filter-name>
+        <filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
+        <init-param>
+            <param-name>applicationClassName</param-name>
+            <param-value>gr.ntua.imu.topics.app.TopicApplication</param-value>
+        </init-param>
+    </filter>
 
-	<filter-mapping>
-		<filter-name>wicket.wicketTest</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+    <filter-mapping>
+        <filter-name>wicket.wicketTest</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
