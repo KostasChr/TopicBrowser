@@ -1,9 +1,6 @@
 package gr.ntua.imu.topics.data;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.charset.Charset;
 import java.util.HashSet;
 import java.util.logging.Logger;
@@ -11,7 +8,7 @@ import java.util.logging.Logger;
 /**
  * @author Kostas Christidis
  */
-public class FileSource implements Source {
+public class FileSource implements Source,Serializable {
 
     private static Source instance;
     private String filePath;

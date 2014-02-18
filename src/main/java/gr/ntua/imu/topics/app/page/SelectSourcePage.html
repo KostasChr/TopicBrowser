@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
+<head>
+    <title>Wicket Examples - helloworld</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body>
+<form wicket:id="inputForm" class="inputForm">
+    <fieldset>
+        <label for="alpha">alpha </label>
+        <input wicket:id="alpha" id="alpha" type="text" size="40"/>
+        <label for="beta">beta</label>
+        <input wicket:id="beta" id="beta" type="text" size="40"/>
+        <label for="numberOfIterations">Number of Iterations</label>
+        <input wicket:id="numberOfIterations" id="numberOfIterations" type="text" size="40"/>
+        <label for="numberOfTopics">Number of topics </label>
+        <input wicket:id="numberOfTopics" id="numberOfTopics" type="text" size="40"/>
+    </fieldset>
+    <input type="submit" wicket:id="saveButton" value="save" />
+    <input type="submit" wicket:id="resetButton" value="reset" />
+</form>
+
+</body>
+</html>
+
+

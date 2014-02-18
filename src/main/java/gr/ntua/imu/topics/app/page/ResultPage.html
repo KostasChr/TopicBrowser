@@ -5,7 +5,20 @@
     <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 <body>
-<span wicket:id="msg" id="message">Message goes here</span>
+
+<table cellspacing="0" class="dataview">
+    <tr>
+
+        <th>ID</th>
+        <th>Words</th>
+
+    </tr>
+    <tr wicket:id="simple">
+        <td><span wicket:id="id">[id]</span></td>
+        <td><span wicket:id="words">[words]</span> </td>
+    </tr>
+</table>
+
 </body>
 </html>
 

@@ -1,6 +1,6 @@
 package gr.ntua.imu.topics.app;
 
-import gr.ntua.imu.topics.app.page.SimplePage;
+import gr.ntua.imu.topics.app.page.SelectSourcePage;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.springframework.stereotype.Component;
@@ -9,9 +9,9 @@ import org.springframework.stereotype.Component;
 public class TopicApplication extends WebApplication {
 
 	@Override
-	public Class<SimplePage> getHomePage() {
+	public Class<SelectSourcePage> getHomePage() {
 
-		return SimplePage.class; // return default page
+		return SelectSourcePage.class; // return default page
 	}
 	
 	@Override

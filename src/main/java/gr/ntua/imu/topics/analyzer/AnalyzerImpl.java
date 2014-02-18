@@ -9,13 +9,14 @@ import cc.mallet.types.InstanceList;
 import gr.ntua.imu.topics.data.Source;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.*;
 import java.util.regex.Pattern;
 
 /**
  * @author KostasChr
  */
-public class AnalyzerImpl implements Analyzer {
+public class AnalyzerImpl implements Analyzer, Serializable {
 
     private Pipe pipe;
     private Integer numberOfTopics;
