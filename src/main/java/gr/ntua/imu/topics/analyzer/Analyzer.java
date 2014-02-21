@@ -1,6 +1,8 @@
 package gr.ntua.imu.topics.analyzer;
 
-import java.util.Set;
+import gr.ntua.imu.topics.model.Token;
+
+import java.util.PriorityQueue;
 
 /**
  * @author KostasChr
@@ -10,7 +12,7 @@ public interface Analyzer {
 
     void estimate();
 
-    Set<String> getWordsForTopic(Integer topicId);
+    PriorityQueue<Token> getWordsForTopic(Integer topicId);
 
     Integer getSize();
 

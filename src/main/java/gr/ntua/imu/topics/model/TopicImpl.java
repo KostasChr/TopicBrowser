@@ -1,17 +1,16 @@
 package gr.ntua.imu.topics.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.PriorityQueue;
 
 /**
  * @author KostasChr
  */
 
-public class TopicImpl implements Topic,Serializable{
+public class TopicImpl implements Comparable<Topic>,Topic, Serializable {
 
     private Integer id;
-    private HashSet<String> topWords;
+    private PriorityQueue<Token> tokens;
     private Double probability;
 
     @Override
@@ -20,8 +19,8 @@ public class TopicImpl implements Topic,Serializable{
     }
 
     @Override
-    public Set<String> getTopWords() {
-        return topWords;  //To change body of implemented methods use File | Settings | File Templates.
+    public PriorityQueue<Token> getTokens() {
+        return tokens;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
@@ -33,11 +32,16 @@ public class TopicImpl implements Topic,Serializable{
         this.id = id;
     }
 
-    public void setTopWords(HashSet<String> topWords) {
-        this.topWords = topWords;
+    public void setTokens(PriorityQueue<Token> tokens) {
+        this.tokens = tokens;
     }
 
     public void setProbability(Double probability) {
         this.probability = probability;
+    }
+
+    @Override
+    public int compareTo(Topic topic) {
+        return Double.compare(topic.getProbability(),this.getProbability());  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

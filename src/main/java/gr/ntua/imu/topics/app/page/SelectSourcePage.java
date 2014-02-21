@@ -2,10 +2,7 @@ package gr.ntua.imu.topics.app.page;
 
 import gr.ntua.imu.topics.BrowserService;
 import gr.ntua.imu.topics.analyzer.Analyzer;
-import gr.ntua.imu.topics.analyzer.AnalyzerImpl;
-import org.apache.wicket.PageParameters;
 import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
@@ -15,24 +12,19 @@ import org.apache.wicket.validation.validator.RangeValidator;
 
 public class SelectSourcePage extends WebPage {
 
-	@SpringBean
-	private HelloService helloService;
-
     @SpringBean
     private BrowserService browserService;
 
 
-    private class InputForm extends Form<Analyzer>
-    {
+    private class InputForm extends Form<Analyzer> {
         /**
          * Construct.
          *
-         * @param name
-         *            Component name
+         * @param name Component name
          */
         @SuppressWarnings("serial")
-        public InputForm(String name)
-        {    super(name, new CompoundPropertyModel<Analyzer>(browserService.getAnalyzer()));
+        public InputForm(String name) {
+            super(name, new CompoundPropertyModel<Analyzer>(browserService.getAnalyzer()));
 
             add(new TextField<Integer>("numberOfIterations").setRequired(true).add(
                     new RangeValidator<Integer>(0, 5000)));
@@ -42,11 +34,9 @@ public class SelectSourcePage extends WebPage {
             add(new TextField<Double>("beta", Double.class).setRequired(true));
             add(new Button("saveButton"));
 
-            add(new Button("resetButton")
-            {
+            add(new Button("resetButton") {
                 @Override
-                public void onSubmit()
-                {
+                public void onSubmit() {
                     // just set a new instance of the page
                     setResponsePage(SelectSourcePage.class);
                 }
@@ -56,13 +46,12 @@ public class SelectSourcePage extends WebPage {
         }
 
         @Override
-        public void onSubmit()
-        {
+        public void onSubmit() {
             setResponsePage(ResultPage.class);
         }
     }
 
-    public SelectSourcePage(final PageParameters parameters) {
+    public SelectSourcePage() {
         add(new InputForm("inputForm"));
 
     }

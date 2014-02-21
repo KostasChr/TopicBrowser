@@ -1,32 +1,24 @@
 package gr.ntua.imu.topics.app.page;
 
 import gr.ntua.imu.topics.BrowserService;
-import gr.ntua.imu.topics.analyzer.Analyzer;
+import gr.ntua.imu.topics.model.Token;
 import gr.ntua.imu.topics.model.Topic;
-import org.apache.wicket.AttributeModifier;
-import org.apache.wicket.PageParameters;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Button;
-import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
-import org.apache.wicket.model.AbstractReadOnlyModel;
-import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
-import org.apache.wicket.validation.validator.RangeValidator;
+
+import java.util.PriorityQueue;
 
 public class ResultPage extends WebPage {
 
     @SpringBean
-    private HelloService helloService;
-
-    @SpringBean
     private BrowserService browserService;
 
+    private Integer numberOfWords = 10;
 
-    public ResultPage(final PageParameters parameters) {
+    public ResultPage() {
         browserService.presentResults();
         add(new DataView<Topic>("simple", browserService) {
             private static final long serialVersionUID = 1L;
@@ -34,10 +26,13 @@ public class ResultPage extends WebPage {
             @Override
             protected void populateItem(final Item<Topic> item) {
                 Topic topic = item.getModelObject();
-                topic.getTopWords();
+                PriorityQueue<Token> queue = topic.getTokens();
                 StringBuilder sb = new StringBuilder();
-                for (String word : topic.getTopWords()) {
-                    sb.append(word + " ");
+                Integer counter = numberOfWords;
+                while (!queue.isEmpty() && counter > 0) {
+                    counter--;
+                    Token token = queue.poll();
+                    sb.append(token.getToken() + " (" + token.getProbability() + ") , ");
                 }
                 item.add(new Label("id", String.valueOf(topic.getId())));
                 item.add(new Label("words", sb.toString()));

@@ -7,6 +7,8 @@ import cc.mallet.types.Alphabet;
 import cc.mallet.types.IDSorter;
 import cc.mallet.types.InstanceList;
 import gr.ntua.imu.topics.data.Source;
+import gr.ntua.imu.topics.model.Token;
+import gr.ntua.imu.topics.model.TokenImpl;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -42,7 +44,7 @@ public class AnalyzerImpl implements Analyzer, Serializable {
             getTopicModel().addInstances(instances);
             setDataAlphabet(instances.getDataAlphabet());
         } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
     }
 
@@ -74,22 +76,29 @@ public class AnalyzerImpl implements Analyzer, Serializable {
 
 
         } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
     }
 
     @Override
-    public Set<String> getWordsForTopic(Integer topicId) {
+    public PriorityQueue<Token> getWordsForTopic(Integer topicId) {
+
+        Comparator<Token> comparator = new Comparator<Token>() {
+            @Override
+            public int compare(Token token, Token token2) {
+                return Double.compare(token2.getProbability(), token.getProbability());
+            }
+        };
+        PriorityQueue<Token> queue = new PriorityQueue<Token>(11, comparator);
         Iterator<IDSorter> iterator = topicSortedWords.get(topicId).iterator();
-        HashSet<String> result = new HashSet<String>();
-        int rank = 0;
-        while (iterator.hasNext() && rank < 5) {
+
+        while (iterator.hasNext()) {
             IDSorter idCountPair = iterator.next();
-            result.add((String) getDataAlphabet().lookupObject(idCountPair.getID()));
-            rank++;
+            Token token = new TokenImpl((String) getDataAlphabet().lookupObject(idCountPair.getID()), idCountPair.getWeight());
+            queue.add(token);
         }
 
-        return result;
+        return queue;
     }
 
     @Override

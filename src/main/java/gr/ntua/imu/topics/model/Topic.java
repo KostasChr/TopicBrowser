@@ -1,7 +1,6 @@
 package gr.ntua.imu.topics.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.PriorityQueue;
 
 /**
  * @author KostasChr
@@ -9,14 +8,16 @@ import java.util.Set;
 
 public interface Topic {
     Integer getId();
-    Set<String> getTopWords();
+
+    PriorityQueue<Token> getTokens();
+
     Double getProbability();
 
     public void setId(Integer id);
 
-    public void setTopWords(HashSet<String> topWords) ;
+    public void setTokens(PriorityQueue<Token> tokens);
 
-    public void setProbability(Double probability) ;
+    public void setProbability(Double probability);
 
 
 }

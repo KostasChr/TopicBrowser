@@ -12,6 +12,7 @@ import java.util.Set;
  */
 public interface Source {
     Set<String> getDocuments();
+
     Set<String> getLabels();
 
     void readDocuments() throws IOException;

@@ -79,6 +79,7 @@
     <orderEntry type="library" name="Maven: org.mockito:mockito-all:1.9.5" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-test:3.2.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:3.2.0.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.wicket:wicket-extensions:1.4.17" level="project" />
   </component>
 </module>
 

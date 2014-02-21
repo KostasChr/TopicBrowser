@@ -1,11 +1,10 @@
 package gr.ntua.imu.topics.model;
 
 import gr.ntua.imu.topics.BrowserService;
+import org.apache.wicket.injection.Injector;
 import org.apache.wicket.injection.web.InjectorHolder;
-import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author KostasChr

@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-    <context:annotation-config />
+    <context:annotation-config/>
     <context:component-scan base-package="gr.ntua.imu.topics"/>
 
     <bean id="analyzer" class="gr.ntua.imu.topics.analyzer.AnalyzerImpl">
@@ -15,6 +15,6 @@
     </bean>
     <bean id="fileSource"
           class="gr.ntua.imu.topics.data.FileSource">
-        <property name="filePath" value="c:\tmp\example.txt" />
+        <property name="filePath" value="c:\tmp\example.txt"/>
     </bean>
 </beans>
