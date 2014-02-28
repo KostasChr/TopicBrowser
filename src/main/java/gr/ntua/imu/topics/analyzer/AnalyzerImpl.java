@@ -6,7 +6,7 @@ import cc.mallet.topics.ParallelTopicModel;
 import cc.mallet.types.Alphabet;
 import cc.mallet.types.IDSorter;
 import cc.mallet.types.InstanceList;
-import gr.ntua.imu.topics.data.Source;
+import gr.ntua.imu.topics.data.FileSource;
 import gr.ntua.imu.topics.model.Token;
 import gr.ntua.imu.topics.model.TokenImpl;
 
@@ -26,17 +26,27 @@ public class AnalyzerImpl implements Analyzer, Serializable {
     private Double alpha;
     private Double beta;
     private ParallelTopicModel topicModel;
-    private Source source;
+    private FileSource fileSource;
     private ArrayList<TreeSet<IDSorter>> topicSortedWords;
     private double[] topicDistribution;
     private Alphabet dataAlphabet;
+
+
+    public String getFileUpload() {
+        return this.fileSource.toString();
+    }
+
+    public void setFileUpload(String path) {
+        FileSource fileSource= this.fileSource;
+        fileSource.setFilePath(path);
+    }
 
     @Override
     public void loadTrainSet() {
         try {
             setPipe(buildPipe());
-            getSource().readDocuments();
-            String[] documents = getSource().getDocuments().toArray(new String[]{});
+            getFileSource().readDocuments();
+            String[] documents = getFileSource().getDocuments().toArray(new String[]{});
             StringArrayIterator iterator = new StringArrayIterator(documents);
             InstanceList instances = new InstanceList(this.getPipe());
             instances.addThruPipe(iterator);
@@ -154,12 +164,12 @@ public class AnalyzerImpl implements Analyzer, Serializable {
         this.topicModel = topicModel;
     }
 
-    public Source getSource() {
-        return source;
+    public FileSource getFileSource() {
+        return fileSource;
     }
 
-    public void setSource(Source source) {
-        this.source = source;
+    public void setFileSource(FileSource fileSource) {
+        this.fileSource = fileSource;
     }
 
     public ArrayList<TreeSet<IDSorter>> getTopicSortedWords() {

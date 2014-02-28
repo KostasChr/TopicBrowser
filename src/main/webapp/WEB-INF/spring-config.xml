@@ -16,10 +16,10 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
         <property name="numberOfIterations" value="100"/>
         <property name="alpha" value="0.01"/>
         <property name="beta" value="0.01"/>
-        <property name="source" ref="fileSource"/>
+        <property name="fileSource" ref="fileSourceImpl"/>
     </bean>
-    <bean id="fileSource"
-          class="gr.ntua.imu.topics.data.FileSource">
+    <bean id="fileSourceImpl"
+          class="gr.ntua.imu.topics.data.FileSourceImpl">
         <property name="filePath" value="c:\tmp\example.txt"/>
     </bean>
 </beans>

@@ -2,14 +2,13 @@ package gr.ntua.imu.topics.model;
 
 import gr.ntua.imu.topics.BrowserService;
 import org.apache.wicket.injection.Injector;
-import org.apache.wicket.injection.web.InjectorHolder;
+
 import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 /**
  * @author KostasChr
  */
-
 public class DetachableTopicModel extends LoadableDetachableModel<Topic> {
 
     private final int id;
@@ -28,7 +27,7 @@ public class DetachableTopicModel extends LoadableDetachableModel<Topic> {
      */
     public DetachableTopicModel(int id) {
 
-        InjectorHolder.getInjector().inject(this);
+        Injector.get().inject(this);
         this.id = id;
     }
 

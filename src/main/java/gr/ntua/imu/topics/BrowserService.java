@@ -16,6 +16,9 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.PriorityQueue;
 
+/**
+ * @author KostasChr
+ */
 @Component
 public class BrowserService implements IDataProvider<Topic>, Serializable {
 
@@ -71,12 +74,12 @@ public class BrowserService implements IDataProvider<Topic>, Serializable {
 
 
     @Override
-    public Iterator<? extends Topic> iterator(int l, int l2) {
+    public Iterator<? extends Topic> iterator(long l,long l2) {
         return topics.iterator();
     }
 
     @Override
-    public int size() {
+    public long size() {
         return topics.size();  //To change body of implemented methods use File | Settings | File Templates.
     }
 

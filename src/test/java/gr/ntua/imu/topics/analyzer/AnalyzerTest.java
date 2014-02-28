@@ -42,7 +42,7 @@ public class AnalyzerTest {
         FileSource mockSource = Mockito.mock(FileSource.class);
         when(mockSource.getDocuments()).thenReturn(mockDocumentSet);
         when(mockSource.getLabels()).thenReturn(mockLabelSet);
-        analyzer.setSource(mockSource);
+        analyzer.setFileSource(mockSource);
         analyzer.loadTrainSet();
         analyzer.estimate();
         Assert.assertNotNull(analyzer.getWordsForTopic(0));
