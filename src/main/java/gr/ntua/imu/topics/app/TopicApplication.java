@@ -18,7 +18,7 @@ public class TopicApplication extends WebApplication {
     @Override
     public Class<SourcePage> getHomePage() {
 
-        return SourcePage.class; // return default page
+        return SourcePage.class;
     }
 
     @Override
@@ -27,7 +27,6 @@ public class TopicApplication extends WebApplication {
         BootstrapSettings settings = new BootstrapSettings();
         Bootstrap.install(this, settings);
         getComponentInstantiationListeners().add(new SpringComponentInjector(this));
-       // addComponentInstantiationListener(new SpringComponentInjector(this));
     }
 
 }
