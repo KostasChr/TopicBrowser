@@ -24,4 +24,6 @@ To use this:
 3. See the topic analysis
 
   ![Screen 2](https://raw.github.com/KostasChr/TopicBrowser/master/images/screen2.png)
+
+
    Uses mallet for topic models, Maven/Spring, Apache Wicket, Junit and Mockito and Bootstrap.
