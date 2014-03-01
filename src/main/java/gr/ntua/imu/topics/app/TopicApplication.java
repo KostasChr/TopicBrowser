@@ -26,6 +26,7 @@ public class TopicApplication extends WebApplication {
         super.init();
         BootstrapSettings settings = new BootstrapSettings();
         Bootstrap.install(this, settings);
+        getComponentInstantiationListeners().add(new SpringComponentInjector(this));
        // addComponentInstantiationListener(new SpringComponentInjector(this));
     }
 

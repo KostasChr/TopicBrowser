@@ -1,6 +1,10 @@
 package gr.ntua.imu.topics.app.page;
 
 import de.agilecoders.wicket.markup.html.bootstrap.heading.Heading;
+import de.agilecoders.wicket.markup.html.bootstrap.html.ChromeFrameMetaTag;
+import de.agilecoders.wicket.markup.html.bootstrap.html.HtmlTag;
+import de.agilecoders.wicket.markup.html.bootstrap.html.MetaTag;
+import de.agilecoders.wicket.markup.html.bootstrap.html.OptimizedMobileViewportMetaTag;
 import gr.ntua.imu.topics.data.FileSource;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Button;
@@ -70,8 +74,18 @@ public class SourcePage extends WebPage {
     }
 
     public SourcePage() {
-        Heading heading = new Heading("wicket-markup-id", Model.of("Heading Title"));
+        add(new HtmlTag("html"));
+
+        add(new OptimizedMobileViewportMetaTag("viewport"));
+        add(new MetaTag("description", Model.of("description"), Model.of("Topic Browser")));
+        add(new MetaTag("author", Model.of("author"), Model.of("KostasChr")));
+        add(new ChromeFrameMetaTag("chrome-frame"));
+        //add header panel               `
+
+        Heading heading = new Heading("wicket-markup-id", Model.of("Topic Browser"));
+        Heading heading2 = new Heading("h3", Model.of("Step 1: Upload the file"));
         add(heading);
+        add(heading2);
         add(new FileUploadForm("fileUploadForm"));
 
     }

@@ -1,5 +1,6 @@
 package gr.ntua.imu.topics.app.page;
 
+import de.agilecoders.wicket.markup.html.bootstrap.heading.Heading;
 import gr.ntua.imu.topics.BrowserService;
 import gr.ntua.imu.topics.analyzer.Analyzer;
 import org.apache.wicket.markup.html.WebPage;
@@ -8,6 +9,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.form.upload.FileUploadField;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.validation.validator.RangeValidator;
 
@@ -55,6 +57,10 @@ public class OptionsPage extends WebPage {
     }
 
     public OptionsPage() {
+        Heading heading = new Heading("wicket-markup-id", Model.of("Topic Browser"));
+        Heading heading2 = new Heading("h3", Model.of("Step 2: Select the model options"));
+        add(heading);
+        add(heading2);
         add(new InputForm("inputForm"));
 
     }

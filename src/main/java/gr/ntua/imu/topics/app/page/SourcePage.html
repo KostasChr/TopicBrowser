@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
+<html wicket:id="html" xmlns:wicket="http://wicket.apache.org">
 <head>
     <title>Topic Browser - Options</title>
-    <link rel="stylesheet" type="text/css" href="style.css"/>
+
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen" title="Stylesheet" />
 </head>
 <body>
+<meta wicket:id="viewport">
+<meta wicket:id="description">
+<meta wicket:id="author">
+<meta wicket:id="chrome-frame">
+
 <h1 wicket:id='wicket-markup-id'>Topic Browser</h1>
+<h2 wicket:id='h3'>Step 1: Upload the file</h2>
 <form wicket:id="fileUploadForm" >
     <fieldset>
         <label for="fileInput">upload fileSource file</label>
         <input wicket:id="fileInput" id="fileInput" type="file" size="40"/>
             </fieldset>
-    <input type="submit" wicket:id="saveButton" value="save"/>
+    <input type="submit" wicket:id="saveButton" value="File Select"/>
 
 </form>
 
